@@ -28,11 +28,20 @@ namespace Telemetry.Api
         {
             services.AddMvc();
             services.AddDbContext<TelemetryDataContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:TeleMetry"]));
+
             services.AddTransient<IDeviceRepository, DeviceRepository>();
             services.AddTransient<IDeviceDataRepository, DeviceDataRepository>();
+
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
+
             services.AddSingleton<DeviceType>();
             services.AddSingleton<DeviceQuery>();
+
+            services.AddSingleton<DeviceDataType>();
+            services.AddSingleton<DeviceDataQuery>();
+
+            services.AddSingleton<TelemetryQuery>();
+
             var sp = services.BuildServiceProvider();
             services.AddSingleton<ISchema>(new TelemetrySchema(new FuncDependencyResolver(type => sp.GetService(type))));
         }
