@@ -10,7 +10,7 @@ namespace Telemetry.Api.Queries
         {
             Name = "Query_Device";
 
-            Description = "This API provides list of devices!!!";
+            Description = "This API provides methods to query devices by id or as a list";
 
             Field<DeviceType>(
               "DeviceById",

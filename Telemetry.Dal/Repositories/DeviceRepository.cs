@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Telemetry.Core.Data;
@@ -17,6 +18,8 @@ namespace Telemetry.Dal.Repositories
 
         public async Task<Device> AddDevice(Device device)
         {
+            device.CreatedBy = "System";
+            device.Createdtime = DateTime.Now;
             await _db.Devices.AddAsync(device);
             await _db.SaveChangesAsync();
             return device;

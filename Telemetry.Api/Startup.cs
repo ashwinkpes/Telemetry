@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Telemetry.Api.Models;
+using Telemetry.Api.Models.Inputs;
+using Telemetry.Api.Mutations;
 using Telemetry.Api.Queries;
 using Telemetry.Api.Schemas;
 using Telemetry.Core.Data;
@@ -34,13 +36,21 @@ namespace Telemetry.Api
 
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
 
+            //Return types
             services.AddSingleton<DeviceType>();
-            services.AddSingleton<DeviceQuery>();
-
             services.AddSingleton<DeviceDataType>();
-            services.AddSingleton<DeviceDataQuery>();
 
+            //Input types
+            services.AddSingleton<CreateDeviceType>();
+            
+            //Queries
+            services.AddSingleton<DeviceQuery>();
+            services.AddSingleton<DeviceDataQuery>();
             services.AddSingleton<TelemetryQuery>();
+
+            //Mutations
+            services.AddSingleton<TelemetryMutation>();
+            services.AddSingleton<DeviceMutation>();
 
             var sp = services.BuildServiceProvider();
             services.AddSingleton<ISchema>(new TelemetrySchema(new FuncDependencyResolver(type => sp.GetService(type))));
