@@ -5,7 +5,7 @@ In order to run the project follow the below mentioned steps
 
 1. Set Telemetry.DAL as startup project in visual studio.
 2. Go to file TemporaryDbContextFactory and replace the connection string as per your SQL server.
-3. Navigae in command prompt to the Telemetry.DAl folder and Run "dotnet ef database update".
+3. Navigate in command prompt to the Telemetry.DAl folder and Run <b>"dotnet ef database update"</b>.
 4. This should have created the Database and added the required tables in SQL Server.
 5. Now set Telemetry.API as startup project.
 6. Go to appsettings.Development.JSON and replace the ConnectionStrings:TeleMetry to the same connection string given in step 2.
