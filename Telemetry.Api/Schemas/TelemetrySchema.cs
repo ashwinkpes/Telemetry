@@ -9,6 +9,7 @@ namespace Telemetry.Api.Schemas
         public TelemetrySchema(IDependencyResolver resolver) : base(resolver)
         {
             Query = resolver.Resolve<TelemetryQuery>();
+            
             //Query = resolver.Resolve<DeviceQuery>();
             //Query = resolver.Resolve<DeviceDataQuery>();
         }
