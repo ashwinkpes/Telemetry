@@ -11,7 +11,6 @@ using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.IO;
 using System.Reflection;
-using Telemetry.Api.Helpers;
 using Telemetry.Api.Models;
 using Telemetry.Api.Models.Inputs;
 using Telemetry.Api.Mutations;
@@ -36,6 +35,7 @@ namespace Telemetry.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
             services.AddDbContext<TelemetryDataContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:TeleMetry"]));
 
             services.AddTransient<IDeviceRepository, DeviceRepository>();
