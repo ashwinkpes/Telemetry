@@ -11,6 +11,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.IO;
 using System.Reflection;
+using Telemetry.Api.Helpers;
 using Telemetry.Api.Models;
 using Telemetry.Api.Models.Inputs;
 using Telemetry.Api.Mutations;
@@ -68,24 +69,28 @@ namespace Telemetry.Api
                                  .WriteTo.Seq("http://localhost:5341")
                                 .CreateLogger();
 
+            services.AddOptions();
+
+            var swaggerSettings = Configuration.GetSection("SwaggerSettings");           
+
             //Swagger
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info {
-                    Title = "GraphQL API",
-                    Version = "v1" ,
-                    Description = "A simple example showing grpahql usage in web API",
-                    TermsOfService = "None",
+                    Title = swaggerSettings["Title"],
+                    Version = swaggerSettings["Version"],
+                    Description = swaggerSettings["Description"],
+                    TermsOfService = swaggerSettings["TermsOfService"],
                     Contact = new Contact
                     {
-                        Name = "Team DP Exploration",
-                        Email = "ashwinkpes@gmail.com",
-                        Url = "https://twitter.com/ashwinkpes"
+                        Name = swaggerSettings["Contact:Name"],
+                        Email = swaggerSettings["Contact:Email"],
+                        Url = swaggerSettings["Contact:Url"],
                     }                    ,
                     License = new License
                     {
-                        Name = "Use under LICX",
-                        Url = "https://github.com/ashwinkpes/Telemetry"
+                        Name = swaggerSettings["License:Name"],
+                        Url = swaggerSettings["License:Url"],
                     }
                 });
 
