@@ -7,6 +7,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using Swashbuckle.AspNetCore.Swagger;
+using System;
+using System.IO;
+using System.Reflection;
 using Telemetry.Api.Models;
 using Telemetry.Api.Models.Inputs;
 using Telemetry.Api.Mutations;
@@ -57,13 +61,40 @@ namespace Telemetry.Api
             var sp = services.BuildServiceProvider();
             services.AddSingleton<ISchema>(new TelemetrySchema(new FuncDependencyResolver(type => sp.GetService(type))));
 
+            //Logging using serilog
             Log.Logger = new LoggerConfiguration()
                                  .MinimumLevel.Information()
                                  .Enrich.FromLogContext()
                                  .WriteTo.Seq("http://localhost:5341")
                                 .CreateLogger();
 
-            
+            //Swagger
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info {
+                    Title = "GraphQL API",
+                    Version = "v1" ,
+                    Description = "A simple example showing grpahql usage in web API",
+                    TermsOfService = "None",
+                    Contact = new Contact
+                    {
+                        Name = "Team DP Exploration",
+                        Email = "ashwinkpes@gmail.com",
+                        Url = "https://twitter.com/ashwinkpes"
+                    }                    ,
+                    License = new License
+                    {
+                        Name = "Use under LICX",
+                        Url = "https://github.com/ashwinkpes/Telemetry"
+                    }
+                });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,6 +107,11 @@ namespace Telemetry.Api
                       
             loggerFactory.AddSerilog();
             app.UseGraphiQl();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "GraphQL API V1");
+            });
             app.UseMvc();
             db.EnsureSeedData();
             //Log.CloseAndFlush();

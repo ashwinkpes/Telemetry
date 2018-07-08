@@ -24,7 +24,31 @@ namespace Telemetry.Api.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Performs GraphQL queries.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST 
+        ///	query TelemetryQuery
+        ///	{
+        ///	 deviceQuery {
+        ///	 allDevices {
+        ///		 deviceId,
+        ///		 deviceName
+        ///                 }
+        ///		     }
+        ///	}
+        ///
+        /// </remarks>
+        /// <param name="query"></param>   
+        /// <returns>A status code indicating success or failure</returns>
+        /// <response code="200">Returns the success code 200 if query executed successfully</response>
+        /// <response code="400">Returns the Badrequest code 400 if errors found in response</response>            
         [HttpPost]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
         public async Task<IActionResult> Post([FromBody] GraphQLQuery query)
         {
             if (query == null) {throw new ArgumentNullException(nameof(query)); }
