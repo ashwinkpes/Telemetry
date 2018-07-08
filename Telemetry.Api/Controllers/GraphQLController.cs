@@ -3,9 +3,7 @@ using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Serilog;
 using System;
-using System.Text;
 using System.Threading.Tasks;
 using Telemetry.Api.Graphlql;
 

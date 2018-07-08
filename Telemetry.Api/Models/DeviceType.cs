@@ -1,5 +1,4 @@
 ﻿using GraphQL.Types;
-using Telemetry.Core.Data;
 using Telemetry.Core.Models;
 
 namespace Telemetry.Api.Models
