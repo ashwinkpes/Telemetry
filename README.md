@@ -14,3 +14,57 @@ In order to run the project follow the below mentioned steps
 8. press ctrl-F5.
 9. Browser must open the page http://localhost:49771/GraphQL/
 
+Sample queries
+=================
+1) To get a specific device with a given device id
+```
+query TelemetryQuery($id:Int!)
+{
+   deviceQuery {
+   deviceById(id:$id)
+    {
+      deviceName
+    }
+  }
+}
+
+Under query variables
+{
+  "id" : 152
+}
+```
+2) To get all devices
+```
+query TelemetryQuery
+{
+   deviceQuery {
+    allDevices {
+      deviceId,
+      deviceName
+    }
+  }
+}
+```
+3) To add a device
+```
+mutation ($CreateDeviceType:InputCreateDevice!)
+{
+  deviceMutation{
+       addDevice(CreateDeviceType: $CreateDeviceType){
+    deviceId
+    deviceName
+  }
+
+  }
+
+}
+
+Under query variables
+
+{
+  "CreateDeviceType":{
+    "deviceName":  "TestDevice",
+     "description":   "TestDescription"
+  }
+}
+```
