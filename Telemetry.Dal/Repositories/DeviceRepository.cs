@@ -21,18 +21,18 @@ namespace Telemetry.Dal.Repositories
             device.CreatedBy = "System";
             device.Createdtime = DateTime.Now;
             await _db.Devices.AddAsync(device);
-            await _db.SaveChangesAsync();
+            await _db.SaveChangesAsync().ConfigureAwait(false);
             return device;
         }
 
         public async Task<List<Device>> GetAllDevices()
         {
-            return await _db.Devices.AsNoTracking().ToListAsync();
+            return await _db.Devices.AsNoTracking().ToListAsync().ConfigureAwait(false);
         }
 
         public async Task<Device> GetDeviceById(int id)
         {
-            return await _db.Devices.FirstOrDefaultAsync(s=> s.DeviceId == id);
+            return await _db.Devices.FirstOrDefaultAsync(s=> s.DeviceId == id).ConfigureAwait(false);
         }
     }
 }

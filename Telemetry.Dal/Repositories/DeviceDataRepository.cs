@@ -18,12 +18,12 @@ namespace Telemetry.Dal.Repositories
 
         public async Task<List<DeviceData>> GetAllDeviceData()
         {
-            return await _db.DeviceData.AsNoTracking().ToListAsync();
+            return await _db.DeviceData.AsNoTracking().ToListAsync().ConfigureAwait(false);
         }
 
         public async Task<List<DeviceData>> GetDeviceDataById(int deviceId)
         {
-            return await _db.DeviceData.Where(s=> s.DeviceId == deviceId).AsNoTracking().ToListAsync();
+            return await _db.DeviceData.Where(s=> s.DeviceId == deviceId).AsNoTracking().ToListAsync().ConfigureAwait(false);
         }
     }
 }
