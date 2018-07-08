@@ -9,7 +9,7 @@ In order to run the project follow the below mentioned steps
 3. Navigate in command prompt to the Telemetry.DAl folder and Run <b>"dotnet ef database update"</b>.
 4. This should have created the Database and added the required tables in SQL Server.
 5. Now set <b>Telemetry.API</b> as startup project.
-6. Go to appsettings.Development.JSON and replace the ConnectionStrings:TeleMetry to the same connection string given in step 2.
+6. Right click Telemetru.API and navigate to Manager user secrets and replace the ConnectionStrings:TeleMetry to the same connection string given in step 2.
 7. Download and run Serilog-SEQ from https://getseq.net/Download 
 8. press ctrl-F5.
 9. Browser must open the page http://localhost:49771/GraphQL/
