@@ -7,7 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telemetry.Core", "Telemetry
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telemetry.Dal", "Telemetry.Dal\Telemetry.Dal.csproj", "{8F4F7821-C15C-4046-B90D-93EA35736787}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telemetry.Api", "Telemetry.Api\Telemetry.Api.csproj", "{0A1D5BC4-2AED-41CB-A6D7-E940C1437209}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telemetry.Api", "Telemetry.Api\Telemetry.Api.csproj", "{0A1D5BC4-2AED-41CB-A6D7-E940C1437209}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telemetry.HttpClient", "Telemetry.HttpClient\Telemetry.HttpClient.csproj", "{C0728198-BE22-4647-9466-D8A5558F7BC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesAPI", "MoviesAPI\MoviesAPI.csproj", "{8FA59DD2-F5A4-4606-BD0A-986AF19320C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{0A1D5BC4-2AED-41CB-A6D7-E940C1437209}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A1D5BC4-2AED-41CB-A6D7-E940C1437209}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A1D5BC4-2AED-41CB-A6D7-E940C1437209}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0728198-BE22-4647-9466-D8A5558F7BC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0728198-BE22-4647-9466-D8A5558F7BC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0728198-BE22-4647-9466-D8A5558F7BC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0728198-BE22-4647-9466-D8A5558F7BC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FA59DD2-F5A4-4606-BD0A-986AF19320C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FA59DD2-F5A4-4606-BD0A-986AF19320C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FA59DD2-F5A4-4606-BD0A-986AF19320C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FA59DD2-F5A4-4606-BD0A-986AF19320C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

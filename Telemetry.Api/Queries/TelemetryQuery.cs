@@ -8,6 +8,7 @@ namespace Telemetry.Api.Queries
         {
             Field<DeviceQuery>("DeviceQuery", resolve: ctx => new { });
             Field<DeviceDataQuery>("DeviceDataQuery", resolve: ctx => new { });
+            Field<SmartPumpquery>("SmartPumpquery", resolve: ctx => new { });
         }
     }
 }

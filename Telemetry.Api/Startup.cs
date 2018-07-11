@@ -46,6 +46,7 @@ namespace Telemetry.Api
             //Return types
             services.AddSingleton<DeviceType>();
             services.AddSingleton<DeviceDataType>();
+            services.AddSingleton<MovieType>();
 
             //Input types
             services.AddSingleton<CreateDeviceType>();
@@ -53,6 +54,7 @@ namespace Telemetry.Api
             //Queries
             services.AddSingleton<DeviceQuery>();
             services.AddSingleton<DeviceDataQuery>();
+            services.AddSingleton<SmartPumpquery>();
             services.AddSingleton<TelemetryQuery>();
 
             //Mutations

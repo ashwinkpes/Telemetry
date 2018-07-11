@@ -32,6 +32,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Telemetry.Core\Telemetry.Core.csproj" />
     <ProjectReference Include="..\Telemetry.Dal\Telemetry.Dal.csproj" />
+    <ProjectReference Include="..\Telemetry.HttpClient\Telemetry.HttpClient.csproj" />
   </ItemGroup>
 
 </Project>
