@@ -11,6 +11,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.IO;
 using System.Reflection;
+using Telemetry.Api.APIAgents;
 using Telemetry.Api.Models;
 using Telemetry.Api.Models.Inputs;
 using Telemetry.Api.Mutations;
@@ -60,6 +61,9 @@ namespace Telemetry.Api
             //Mutations
             services.AddSingleton<TelemetryMutation>();
             services.AddSingleton<DeviceMutation>();
+
+            //Agents
+            services.AddTransient<SmartPumpApiAgent>();
 
             var sp = services.BuildServiceProvider();
             services.AddSingleton<ISchema>(new TelemetrySchema(new FuncDependencyResolver(type => sp.GetService(type))));

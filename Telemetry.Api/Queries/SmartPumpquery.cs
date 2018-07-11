@@ -6,7 +6,7 @@ namespace Telemetry.Api.Queries
 {
     public class SmartPumpquery : ObjectGraphType
     {
-        public SmartPumpquery()
+        public SmartPumpquery(SmartPumpApiAgent smartPumpApiAgent)
         {
             Name = "Smart_Pump_Query";
 
@@ -15,7 +15,7 @@ namespace Telemetry.Api.Queries
             Field<ListGraphType<MovieType>>(
               "AllMovies",
                description: "Get data of all the movies",
-              resolve: context => new SmartPumpApiAgent().GetAllMovies());
+              resolve: context => smartPumpApiAgent.GetAllMovies());
         }
     }
 }

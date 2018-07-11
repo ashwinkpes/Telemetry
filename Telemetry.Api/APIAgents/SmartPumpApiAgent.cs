@@ -5,9 +5,12 @@ using Telemetry.HttpClient;
 
 namespace Telemetry.Api.APIAgents
 {
-    public class SmartPumpApiAgent
+    public class SmartPumpApiAgent : BaseApiAgent
     {
-        const string baseUri = "http://localhost:55029/movies";
+        public SmartPumpApiAgent()
+        {
+            base.baseUri = "http://localhost:55029/movies";
+        }
 
         public async Task<List<MovieOutputModel>> GetAllMovies()
         {
