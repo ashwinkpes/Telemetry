@@ -1,10 +1,5 @@
 ﻿using GraphQL.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Telemetry.Api.APIAgents;
-using Telemetry.Api.Controllers;
 using Telemetry.Api.Models;
 
 namespace Telemetry.Api.Queries
