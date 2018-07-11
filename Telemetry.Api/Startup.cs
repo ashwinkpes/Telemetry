@@ -48,6 +48,7 @@ namespace Telemetry.Api
             services.AddSingleton<DeviceType>();
             services.AddSingleton<DeviceDataType>();
             services.AddSingleton<MovieType>();
+            services.AddSingleton<CustomerType>();
 
             //Input types
             services.AddSingleton<CreateDeviceType>();

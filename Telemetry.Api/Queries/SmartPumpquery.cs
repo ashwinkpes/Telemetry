@@ -2,6 +2,7 @@
 using Telemetry.Api.APIAgents;
 using Telemetry.Api.Models;
 
+
 namespace Telemetry.Api.Queries
 {
     public class SmartPumpquery : ObjectGraphType
@@ -12,10 +13,10 @@ namespace Telemetry.Api.Queries
 
             Description = "This API connects to smart pumping APP";
 
-            Field<ListGraphType<MovieType>>(
-              "AllMovies",
+            Field<CustomerType>(
+              "GetCustomer",
                description: "Get data of all the movies",
-              resolve: context => smartPumpApiAgent.GetAllMovies());
+              resolve: context => smartPumpApiAgent.GetCustomer());
         }
     }
 }
