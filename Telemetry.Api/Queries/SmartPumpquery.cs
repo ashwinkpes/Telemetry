@@ -17,6 +17,11 @@ namespace Telemetry.Api.Queries
               "GetCustomer",
                description: "Get data of all the movies",
               resolve: context => smartPumpApiAgent.GetCustomer());
+
+            Field<StringGraphType>(
+               "GetDynamicCustomer",
+                description: "Get data of all the movies",
+               resolve: context => smartPumpApiAgent.GetCustomerDynamic());
         }
     }
 }

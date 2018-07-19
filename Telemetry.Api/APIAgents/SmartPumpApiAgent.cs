@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
+using System.Threading.Tasks;
 using Telemetry.Api.Models;
 using Telemetry.HttpClient;
 
@@ -19,5 +20,13 @@ namespace Telemetry.Api.APIAgents
             var outputModel = response.ContentAsType<Customer>();
             return outputModel;
         }
+
+        public async Task<dynamic> GetCustomerDynamic()
+        {
+            var requestUri = $"{baseUri}";
+            var response = await HttpRequestFactory.Get(requestUri);
+            return JsonConvert.DeserializeObject<dynamic>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));          
+        }
+
     }
 }
