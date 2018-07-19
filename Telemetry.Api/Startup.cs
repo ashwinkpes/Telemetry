@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using Serilog.Events;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.IO;
@@ -69,12 +70,25 @@ namespace Telemetry.Api
             var sp = services.BuildServiceProvider();
             services.AddSingleton<ISchema>(new TelemetrySchema(new FuncDependencyResolver(type => sp.GetService(type))));
 
-            //Logging using serilog
+            //Logging using serilog - http server as seq
             Log.Logger = new LoggerConfiguration()
                                  .MinimumLevel.Information()
                                  .Enrich.FromLogContext()
                                  .WriteTo.Seq("http://localhost:5341")
                                 .CreateLogger();
+
+
+            //Logging into database using serilog
+            //services.AddSingleton<Serilog.ILogger>
+            //(x => new LoggerConfiguration()
+            //      .MinimumLevel.Information()
+            //      .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+            //      .MinimumLevel.Override("System", LogEventLevel.Error)
+            //      .WriteTo.MSSqlServer(Configuration["Serilog:ConnectionString"]
+            //      , Configuration["Serilog:TableName"]
+            //      , LogEventLevel.Information)
+            //      .CreateLogger());
+
 
             services.AddOptions();
 
